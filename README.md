@@ -4,7 +4,7 @@
 
 Hotel-Management-System/ │ ├── index.html ├── login.html ├── booking.html ├── css/ │ └── style.css ├── js/ │ └── script.js └── images/
 
-🚀 Live Demo 
+🚀 Live Demo https://sonalisahani123456.github.io/Hotel-Management-System/
 
 📌 Project Purpose This project is created for: Frontend Development Practice College/Academic Submission Understanding real-world hotel website design Improving HTML, CSS, and JavaScript skills
 
