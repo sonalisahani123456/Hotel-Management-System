@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    
+    <div class="form-container">
+        <h2>Register your self </h2>
+        <form id="registrationForm" onsubmit="return validateForm()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            
+            <button type="submit">Register</button>
+            <p id="errorMessage" class="error-message"></p>
+        </form>
+    </div>
+    <script >
+        function validateForm() {
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const errorMessage = document.getElementById("errorMessage");
+
+    errorMessage.textContent = ""; // Clear previous error message
+
+    // Basic email format check
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+        errorMessage.textContent = "Please enter a valid email address.";
+        return false;
+    }
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+        errorMessage.textContent = "Passwords do not match.";
+        return false;
+    }
+
+    alert("Registration successful!");
+    return true;
+}
+    </script>
+</body>
+</html>

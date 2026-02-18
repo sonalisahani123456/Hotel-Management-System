@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Reservation Form</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color:#a3eee7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color:#85e4db;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 {
+            text-align: center;
+            color:#203087;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            color: #203087;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            font-size: 16px;
+        }
+
+        select {
+            height: 38px;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .submit-btn, .reset-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn {
+            background-color: #203087;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background-color:#203087;
+        }
+
+        .reset-btn {
+            background-color: #203087;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background-color: #203087;
+        }
+
+        .fas {
+            margin-right: 8px;
+        }
+
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .alert-content {
+            text-align: center;
+        }
+
+        .alert-content h3 {
+            color:#203087;
+            margin-bottom: 15px;
+        }
+
+        .alert-content p {
+            color: #203087;
+            margin-bottom: 20px;
+        }
+
+        .alert-content button {
+            padding: 10px 20px;
+            background-color: #203087;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .alert-content button:hover {
+            background-color: #203087;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Hotel Reservation</h2>
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="firstName"><i class="fas fa-user"></i> First Name</label>
+                <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+            </div>
+            <div class="form-group">
+                <label for="lastName"><i class="fas fa-user"></i> Last Name</label>
+                <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+            </div>
+            <div class="form-group">
+                <label for="email"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="phone"><i class="fas fa-phone"></i> Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+                <label for="checkIn"><i class="fas fa-calendar-day"></i> Check-in Date</label>
+                <input type="date" id="checkIn" name="checkIn" required>
+            </div>
+            <div class="form-group">
+                <label for="checkOut"><i class="fas fa-calendar-day"></i> Check-out Date</label>
+                <input type="date" id="checkOut" name="checkOut" required>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit" class="submit-btn"><i class="fas fa-paper-plane"></i> Submit</button>
+                <button type="reset" class="reset-btn"><i class="fas fa-undo"></i> Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="customAlert" class="custom-alert">
+        <div class="alert-content">
+            <h3><i class="fas fa-check-circle"></i> Registration Submitted</h3>
+            <p id="alertMessage"></p>
+            <a href="/payment.html"><button>Next</button></a>
+        </div>
+    </div>
+
+    <script>
+        // Function to set today's date and disable past dates for check-in and check-out
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("checkIn").setAttribute("min", today);
+        document.getElementById("checkOut").setAttribute("min", today);
+
+        // Function to update check-out date min value when check-in is selected
+        document.getElementById("checkIn").addEventListener("change", function() {
+            const checkInDate = this.value;
+            document.getElementById("checkOut").setAttribute("min", checkInDate);
+        });
+
+        // Form submission logic
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+            const checkIn = document.getElementById("checkIn").value;
+            const checkOut = document.getElementById("checkOut").value;
+
+            if(firstName && lastName && email && phone && checkIn && checkOut) {
+                // Update the custom alert content
+                document.getElementById("alertMessage").innerText = 
+                    `First Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nCheck-in Date: ${checkIn}\nCheck-out Date: ${checkOut}`;
+                
+                // Show the custom alert
+                document.getElementById("customAlert").style.display = 'block';
+            } else {
+                alert("Please fill in all the fields.");
+            }
+        });
+
+        // Close alert logic
+        function closeAlert() {
+            document.getElementById("customAlert").style.display = 'none';
+        }
+    </script>
+</body>
+</html>

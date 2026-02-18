@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>summary</title>
+    <style>
+/* Reset & Styling */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  header h1 {
+    color: green;
+  }
+  
+  header p {
+    font-size: 18px;
+    color: #7f8c8d;
+  }
+  
+  section {
+    margin-bottom: 20px;
+  }
+  
+  .reservation-summary {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .reservation-summary h2 {
+    color: black;
+  }
+  
+  .reservation-details {
+    margin: 10px 0;
+  }
+  
+  .message {
+    font-style: italic;
+    margin-top: 15px;
+  }
+  
+  .review-section h2 {
+    color: black;
+  }
+  
+  textarea {
+    width: 100%;
+    height: 80px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: rgb(67, 159, 67);
+  }
+  
+  #reviewsContainer {
+    margin-top: 20px;
+  }
+  
+  #reviewsList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #reviewsList li {
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+          <h1>Thankyou!</h1>
+          <p>Your comfort is our priority!</p>
+        </header>
+    
+        <section class="reservation-summary">
+          <h2>Reservation Summary</h2>
+          <div class="reservation-details">
+            <p><strong>Reservation ID:</strong> <span id="reservationId">#bn19765</span></p>
+          <p><b>Thank you for choosing our Hotel. We look forward to hosting you!</b></p>
+        </section>
+    
+        <section class="review-section">
+          <h2>Your Feedback Matters</h2>
+          <textarea id="review" placeholder="Leave your review here..."></textarea>
+          <button id="submitReview">Submit Review</button>
+          </div>
+        </section>
+      </div>
+<script>
+// Dynamic Reservation ID Example
+document.getElementById("reservationId").textContent = "#" + Math.floor(Math.random() * 100000);
+
+// Submit Review Button
+document.getElementById("submitReview").addEventListener("click", function () {
+  const reviewInput = document.getElementById("review");
+  const reviewText = reviewInput.value.trim();
+  
+  if (reviewText !== "NULL") {
+    const reviewList = document.getElementById("reviewsList");
+    const newReview = document.createElement("li");
+    newReview.textContent = reviewText;
+    reviewList.appendChild(newReview);
+
+    reviewInput.value = "text"; // Clear textarea
+    alert("Thank you for your feedback!");
+  } else {
+    alert("Please enter a review before submitting.");
+  }
+});
+    
+</script>    
+</body>
+</html>

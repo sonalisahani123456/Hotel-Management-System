@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>booking.com</title>
+    <style>
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+}
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #333;
+    padding: 15px;
+    color: orange;
+    font-size: 25px;
+    text-align: center;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  #search-bar {
+    padding: 8px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    width: 700px;
+    right: 30px;
+  }
+  
+  #search-button {
+    padding: 8px;
+    background-color: black;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    color: white;
+  }
+  
+/* Container for centered content */
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background-color:#ffa500;
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+header p {
+    font-size: 18px;
+    color: rgb(50, 49, 49);
+}
+
+/* Hotel Listings */
+.hotel-listings {
+    padding: 50px 0;
+    background-color: #fff;
+}
+
+.hotel-listings h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.hotel {
+    display: flex;
+    margin-bottom: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.hotel img.hotel-image {
+    width: 40%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.hotel-info {
+    padding: 20px;
+    width: 60%;
+}
+
+.hotel h3 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.hotel .location {
+    font-size: 16px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.hotel .about {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.hotel .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.hotel .offer {
+    font-size: 16px;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.book-now-btn {
+    background-color:#ffa500;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.book-now-btn:hover {
+    background-color: lightsalmon;
+}
+
+/* Footer */
+footer {
+    background-color: black;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 14px;
+}
+    </style>
+</head>
+<body>
+
+ <!--header section-->
+ <nav class="navbar">
+    <div class="navbar-brand" style="color: white;">Booking.com</div>
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Search..." oninput="showSuggestions(this.value)">
+        <button id="search-button">
+            🔍
+        </button>
+        <div class="suggestions" id="suggestions-list"></div>
+    </div>
+</nav>
+
+    <header>
+        <div class="container">
+            <h1>Goa's Hotels</h1>
+            <p>Explore the finest hotels in Goa with amazing offers and deals. Book now for an unforgettable stay!</p>
+        </div>
+    </header>
+    
+    <section class="hotel-listings">
+        <div class="container">
+          
+    
+            <!-- Hotel 1 -->
+            <div class="hotel">
+                <img src="11.jpg" alt="The Leela Goa" class="hotel-image">
+                <div class="hotel-info">
+                    <h3>The Leela Goa</h3>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Cavelossim, Goa</p>
+                    <p class="about">A luxurious beachfront resort offering spacious rooms, stunning views, and world-class amenities.</p>
+                    <p class="price">₹11,000 per night</p>
+                    <p class="offer">Exclusive Offer: 15% off for early bookings!</p>
+                    <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+                </div>
+            </div>
+    
+            <!-- Hotel 2 -->
+            <div class="hotel">
+                <img src="12.jpeg" alt="Taj Exotica Resort & Spa" class="hotel-image">
+                <div class="hotel-info">
+                    <h3>Taj Exotica Resort & Spa</h3>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Benaulim, Goa</p>
+                    <p class="about">A luxurious resort offering panoramic views of the Arabian Sea, perfect for a relaxing vacation.</p>
+                    <p class="price">₹12,000 per night</p>
+                    <p class="offer">Exclusive Offer: Free Spa Voucher for 2!</p>
+                    <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+                </div>
+            </div>
+    
+            <!-- Hotel 3 -->
+            <div class="hotel">
+                <img src="w-goa.jpeg" alt="W Goa" class="hotel-image">
+                <div class="hotel-info">
+                    <h3>W Goa</h3>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Vagator, Goa</p>
+                    <p class="about">An upscale hotel with trendy decor, a vibrant nightlife scene, and a prime location in North Goa.</p>
+                    <p class="price">₹13,000 per night</p>
+                    <p class="offer">Exclusive Offer: Free Breakfast & Complimentary Cocktail!</p>
+                    <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+                </div>
+            </div>
+    
+            <!-- Hotel 4-->
+            <div class="hotel">
+                <img src="grant-hyatt.webp" alt="Grand Hyatt Goa" class="hotel-image">
+                <div class="hotel-info">
+                    <h3>Grand Hyatt Goa</h3>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Bambolim, Goa</p>
+                    <p class="about">A luxurious hotel offering a blend of Goan hospitality and modern luxury with stunning views.</p>
+                    <p class="price">₹13,500 per night</p>
+                    <p class="offer">Exclusive Offer: 20% off on all bookings made this week!</p>
+                    <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+                </div>
+            </div>
+    
+            <!-- Hotel 5-->
+            <div class="hotel">
+                <img src="alila-diwa.webp" alt="Alila Diwa Goa" class="hotel-image">
+                <div class="hotel-info">
+                    <h3>Alila Diwa Goa</h3>
+                    <p class="location"><i class="fas fa-map-marker-alt"></i> Majorda, Goa</p>
+                    <p class="about">An elegant resort offering a unique combination of luxury, modern facilities, and Goan culture.</p>
+                    <p class="price">₹10,000 per night</p>
+                    <p class="offer">Exclusive Offer: Complimentary airport transfers!</p>
+                    <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    
+<header>
+    <div class="container">
+        <h1>Madhya Pradesh's Hotels</h1>
+        <p>Book your stay at the best hotels in Madhya Pradesh with exclusive offers and discounts.</p>
+    </div>
+</header>
+
+<section class="hotel-listings">
+    <div class="container">
+
+        <!-- Hotel 2 -->
+        <div class="hotel">
+            <img src="radisson-blu.jpeg" alt="Radisson Blu, Indore" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Radisson Blu, Indore</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Indore, Madhya Pradesh</p>
+                <p class="about">Modern hotel in the heart of Indore offering world-class facilities and spacious rooms.</p>
+                <p class="price">₹8,000 per night</p>
+                <p class="offer">Exclusive Offer: Book 2 nights and get 1 night free!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="hotel">
+            <img src="jehan-numa.avif" alt="Jehan Numa Palace" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Jehan Numa Palace, Bhopal</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Bhopal, Madhya Pradesh</p>
+                <p class="about">A heritage hotel offering royal ambiance with a perfect blend of luxury and comfort.</p>
+                <p class="price">₹10,000 per night</p>
+                <p class="offer">Exclusive Offer: 20% off on stays longer than 3 nights!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 5 -->
+        <div class="hotel">
+            <img src="chandelao.avif" alt="Chandelao Garh, Jodhpur" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Chandelao Garh, Jodhpur</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Jodhpur, Rajasthan</p>
+                <p class="about">A beautiful heritage hotel offering a true experience of royal Rajasthan.</p>
+                <p class="price">₹6,000 per night</p>
+                <p class="offer">Exclusive Offer: 15% off on 2+ nights bookings!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<header>
+    <div class="container">
+        <h1>Uttar Pradesh's Hotels</h1>
+        <p>Explore the finest hotels in Uttar Pradesh with exclusive offers and discounts.</p>
+    </div>
+</header>
+
+<section class="hotel-listings">
+    <div class="container">
+      
+
+        <!-- Hotel 1 -->
+        <div class="hotel">
+            <img src="image.png" alt="Hotel Taj Mahal, Agra" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Hotel Taj Mahal, Agra</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Agra, Uttar Pradesh</p>
+                <p class="about">A stunning luxury hotel with breathtaking views of the Taj Mahal, offering world-class amenities.</p>
+                <p class="price">₹12,000 per night</p>
+                <p class="offer">Exclusive Offer: 30% off for early bookings!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="hotel">
+            <img src="radisson-blu.jpeg" alt="Radisson Blu, Kanpur" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Radisson Blu, Kanpur</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Kanpur, Uttar Pradesh</p>
+                <p class="about">A modern luxury hotel offering premium rooms and impeccable service, ideal for both business and leisure.</p>
+                <p class="price">₹8,500 per night</p>
+                <p class="offer">Exclusive Offer: 20% off for bookings over 3 nights!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="hotel">
+            <img src="itc-mughal.jpg" alt="ITC Mughal, Agra" class="hotel-image">
+            <div class="hotel-info">
+                <h3>ITC Mughal, Agra</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Agra, Uttar Pradesh</p>
+                <p class="about">A heritage hotel blending Mughal architecture with modern amenities, set in lush gardens.</p>
+                <p class="price">₹9,000 per night</p>
+                <p class="offer">Exclusive Offer: 10% off on 2+ nights bookings!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 4 -->
+        <div class="hotel">
+            <img src="gateway.jpeg" alt="The Gateway Hotel, Varanasi" class="hotel-image">
+            <div class="hotel-info">
+                <h3>The Gateway Hotel, Varanasi</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Varanasi, Uttar Pradesh</p>
+                <p class="about">Located by the river Ganges, this hotel offers a spiritual experience combined with luxury.</p>
+                <p class="price">₹7,000 per night</p>
+                <p class="offer">Exclusive Offer: Complimentary river view room upgrade!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 5 -->
+        <div class="hotel">
+            <img src="clarks-shiraz.jpeg" alt="Clarks Shiraz, Agra" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Clarks Shiraz, Agra</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Agra, Uttar Pradesh</p>
+                <p class="about">A premier hotel offering stunning views of the Taj Mahal and renowned for its dining experiences.</p>
+                <p class="price">₹6,500 per night</p>
+                <p class="offer">Exclusive Offer: 15% off for weekend bookings!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<header>
+    <div class="container">
+        <h1>Uttarakhand's Hotels</h1>
+        <p>Explore the best hotels in Uttarakhand with amazing offers and discounts. Book your dream stay now!</p>
+    </div>
+</header>
+
+<section class="hotel-listings">
+    <div class="container">
+       
+
+        <!-- Hotel 1 -->
+        <div class="hotel">
+            <img src="nainital.jpg" alt="Hotel Nainital Lakeview, Nainital" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Hotel Nainital Lakeview, Nainital</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Nainital, Uttarakhand</p>
+                <p class="about">A beautiful lakeside hotel offering spectacular views of Nainital Lake. Perfect for relaxation and leisure.</p>
+                <p class="price">₹8,000 per night</p>
+                <p class="offer">Exclusive Offer: 20% off for early bookings!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 2 -->
+        <div class="hotel">
+            <img src="corbett.jpeg" alt="The Corbett Hideaway, Corbett" class="hotel-image">
+            <div class="hotel-info">
+                <h3>The Corbett Hideaway, Corbett</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Jim Corbett, Uttarakhand</p>
+                <p class="about">A perfect retreat amidst nature, offering safari adventures and serene experiences at the Jim Corbett National Park.</p>
+                <p class="price">₹10,500 per night</p>
+                <p class="offer">Exclusive Offer: Free Safari Tour with your booking!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="hotel">
+            <img src="balmoral.jpg" alt="The Balmoral House, Mussoorie" class="hotel-image">
+            <div class="hotel-info">
+                <h3>The Balmoral House, Mussoorie</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Mussoorie, Uttarakhand</p>
+                <p class="about">Located in the scenic hills of Mussoorie, this heritage hotel offers modern facilities with breathtaking views.</p>
+                <p class="price">₹9,500 per night</p>
+                <p class="offer">Exclusive Offer: Complimentary Breakfast and Tea for 2!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 4 -->
+        <div class="hotel">
+            <img src="kumaon.jpeg" alt="Kumaon Mandal Vikas Nigam, Almora" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Kumaon Mandal Vikas Nigam, Almora</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Almora, Uttarakhand</p>
+                <p class="about">A peaceful getaway nestled in the Kumaon hills, offering serene views and eco-friendly accommodations.</p>
+                <p class="price">₹6,500 per night</p>
+                <p class="offer">Exclusive Offer: 15% off on longer stays!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 5 -->
+        <div class="hotel">
+            <img src="glasshouse.jpeg" alt="The Glasshouse on the Ganges, Rishikesh" class="hotel-image">
+            <div class="hotel-info">
+                <h3>The Glasshouse on the Ganges, Rishikesh</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Rishikesh, Uttarakhand</p>
+                <p class="about">An idyllic retreat located on the banks of the Ganges, offering luxury and tranquility amidst nature.</p>
+                <p class="price">₹12,000 per night</p>
+                <p class="offer">Exclusive Offer: Free Yoga and Meditation session with every stay!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 6 -->
+        <div class="hotel">
+            <img src="anada.jpg" alt="Ananda in the Himalayas, Narendra Nagar" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Ananda in the Himalayas, Narendra Nagar</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Narendra Nagar, Uttarakhand</p>
+                <p class="about">A luxurious wellness retreat offering rejuvenating spa therapies, yoga, and stunning views of the Himalayas.</p>
+                <p class="price">₹12,000 per night</p>
+                <p class="offer">Exclusive Offer: Complimentary Spa Voucher with every booking!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<header>
+    <div class="container">
+        <h1>West Bengal's Hotels</h1>
+        <p>Explore the finest hotels in West Bengal, India. Get the best deals and offers when you book with us!</p>
+    </div>
+</header>
+
+<section class="hotel-listings">
+    <div class="container">
+       
+        <!-- Hotel 2 -->
+        <div class="hotel">
+            <img src="itc-sonar.avif" alt="ITC Sonar, Kolkata" class="hotel-image">
+            <div class="hotel-info">
+                <h3>ITC Sonar, Kolkata</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p class="about">A luxury resort in the heart of Kolkata, offering world-class amenities and stunning views of nature and the city skyline.</p>
+                <p class="price">₹11,500 per night</p>
+                <p class="offer">Exclusive Offer: 20% off on extended stays!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 3 -->
+        <div class="hotel">
+            <img src="swissotel.jpg" alt="Swissotel, Kolkata" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Swissotel, Kolkata</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p class="about">A luxurious hotel offering panoramic views of the city, with exceptional service and a wide range of dining options.</p>
+                <p class="price">₹13,000 per night</p>
+                <p class="offer">Exclusive Offer: 15% off on weekend stays!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 4 -->
+        <div class="hotel">
+            <img src="sonnet-kolkata.jpg" alt="The Sonnet, Kolkata" class="hotel-image">
+            <div class="hotel-info">
+                <h3>The Sonnet, Kolkata</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Kolkata, West Bengal</p>
+                <p class="about">A 5-star business hotel offering an excellent blend of style, comfort, and luxury with top-class services.</p>
+                <p class="price">₹8,500 per night</p>
+                <p class="offer">Exclusive Offer: Complimentary Airport Transfer!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 5 -->
+        <div class="hotel">
+            <img src="radisson-kalinga.avif" alt="Radisson Blu, Kalinga" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Radisson Blu, Kalinga</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Kalinga, West Bengal</p>
+                <p class="about">Offering luxury accommodations and a wide range of modern amenities, Radisson Blu promises a unique experience.</p>
+                <p class="price">₹11,500 per night</p>
+                <p class="offer">Exclusive Offer: 10% off on direct bookings!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<header>
+    <div class="container">
+        <h1>Maharashtra's Hotels</h1>
+        <p>Explore the finest hotels in Maharashtra with exclusive offers and incredible stays!</p>
+    </div>
+</header>
+
+<section class="hotel-listings">
+    <div class="container">
+
+       
+        <!-- Hotel 3 -->
+        <div class="hotel">
+            <img src="radisson-blu.jpeg" alt="Radisson Blu, Pune" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Radisson Blu, Pune</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Kharadi, Pune</p>
+                <p class="about">A 5-star hotel offering luxurious rooms, excellent dining options, and a prime location in Pune.</p>
+                <p class="price">₹14,000 per night</p>
+                <p class="offer">Exclusive Offer: 10% off for all bookings this month!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 4 -->
+        <div class="hotel">
+            <img src="itc maratha.png" alt="ITC Maratha, Mumbai" class="hotel-image">
+            <div class="hotel-info">
+                <h3>ITC Maratha, Mumbai</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Andheri, Mumbai</p>
+                <p class="about">A luxurious hotel offering elegant rooms and a beautiful blend of traditional and modern architecture.</p>
+                <p class="price">₹16,000 per night</p>
+                <p class="offer">Exclusive Offer: Free Airport Transfers!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+        <!-- Hotel 5 -->
+        <div class="hotel">
+            <img src="maridien.jpg" alt="Le Méridien, Pune" class="hotel-image">
+            <div class="hotel-info">
+                <h3>Le Meridien, Pune</h3>
+                <p class="location"><i class="fas fa-map-marker-alt"></i> Koregaon Park, Pune</p>
+                <p class="about">A beautiful hotel offering luxurious rooms, world-class dining, and vibrant local culture.</p>
+                <p class="price">₹12,500 per night</p>
+                <p class="offer">Exclusive Offer: Complimentary Dinner for 2!</p>
+                <button class="book-now-btn"><a href="gkp.html" style="text-decoration: none;">Book Now</a></button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+
+<footer>
+    <div class="container">
+        <p>&copy; 2024 Hotels. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

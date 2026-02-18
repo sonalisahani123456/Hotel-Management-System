@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Hotel Rooms</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: whitesmoke;
+            color: #333;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .rooms {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .room {
+            background-color: whitesmoke;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+            overflow: hidden;
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .room img {
+            width: 50%;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .room:hover {
+            transform: scale(1.05);
+        }
+
+        .room .details {
+            padding: 20px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .room h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .room .price {
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .btn {
+            display: block;
+            margin-top: 1rem;
+            background-color: orange;
+            color: whitesmoke;
+            padding: 0.5rem 2rem;
+            cursor: pointer;
+            font-size: 1.0rem;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        footer {
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Enlarge image styles */
+        .enlarged-image {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .enlarged-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .enlarged-image .details-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+        }
+
+    </style>
+</head>
+<body>
+   
+<header>
+    <h1>Luxury Hotel Rooms</h1>
+</header>
+<br><br>
+<section class="rooms">
+    <div class="room">
+        <img src="08.jpg" alt="Deluxe Room" onclick="enlargeImage(this, 'Deluxe Rooms', 'A Deluxe hotel room is an upgraded version of a standard room, offering larger space, better amenities, and a superior view.', '₹34,000 per night')">
+        <div class="details">
+            <h2>Deluxe Rooms</h2>
+            <p>A Deluxe hotel room is an upgraded version of a standard room, offering larger space, better amenities, and a superior view.</p><br>
+            <p class="price">₹34,000 per night</p>
+            <a href="registration.html" class="btn">Book Now</a>
+        </div>
+    </div>
+    <div class="room">
+        <img src="09.jpg" alt="Suite Room" onclick="enlargeImage(this, 'Suite Rooms', 'Suite rooms offer multiple separated spaces: Bathroom, Kitchen, Bedroom, Living area, and other amenities.', '₹62,000 per night')">
+        <div class="details">
+            <h2>Suite Rooms</h2>
+            <p>Suite rooms offer multiple separated spaces: Bathroom, Kitchen, Bedroom, Living area, and other amenities.</p><br>
+            <p class="price">₹62,000 per night</p>
+            <a href="registration.html" class="btn">Book Now</a>
+        </div>
+    </div>
+    <div class="room">
+        <img src="07.webp" alt="Executive Room" onclick="enlargeImage(this, 'Executive Rooms', 'Executive rooms are designed for business travelers and offer more space, amenities, and services than standard rooms.', '₹54,000 per night')">
+        <div class="details">
+            <h2>Executive Rooms</h2>
+            <p>Executive rooms are designed for business travelers and offer more space, amenities, and services than standard rooms.</p><br>
+            <p class="price">₹54,000 per night</p>
+            <a href="registration.html" class="btn">Book Now</a>
+        </div>
+    </div>
+    <div class="room">
+        <img src="06.jpg" alt="Presidential Suite" onclick="enlargeImage(this, 'Presidential Suite', 'A Presidential suite is a luxurious set of rooms suitable for heads of state or celebrities, offering top-tier services and comfort.', '₹70,000 per night')">
+        <div class="details">
+            <h2>Presidential Suite</h2>
+            <p>A Presidential suite is a luxurious set of rooms suitable for heads of state or celebrities, offering top-tier services and comfort.</p><br>
+            <p class="price">₹70,000 per night</p>
+            <a href="registration.html" class="btn">Book Now</a>
+        </div>
+    </div>
+</section>
+
+<!-- Enlarged Image Modal -->
+<div class="enlarged-image" id="enlargedImage">
+    <button class="close-btn" onclick="closeImage()">×</button>
+    <img id="enlargedImg" src="" alt="Enlarged Room Image">
+    <div class="details-container">
+        <h2 id="roomTitle"></h2>
+        <p id="roomDescription"></p>
+        <p id="roomPrice" class="price"></p>
+        <a href="registration.html" class="btn">Book Now</a>
+    </div>
+</div>
+<br><br><br>
+<footer>
+    Made with &hearts; by DS Students
+    <br>
+    <p>&copy; 2024 Luxury Hotels. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function enlargeImage(imgElement, title, description, price) {
+        var enlargedImg = document.getElementById("enlargedImg");
+        var enlargedImageModal = document.getElementById("enlargedImage");
+        var roomTitle = document.getElementById("roomTitle");
+        var roomDescription = document.getElementById("roomDescription");
+        var roomPrice = document.getElementById("roomPrice");
+
+        enlargedImg.src = imgElement.src;
+        roomTitle.textContent = title;
+        roomDescription.textContent = description;
+        roomPrice.textContent = price;
+
+        enlargedImageModal.style.display = "flex";
+    }
+
+    function closeImage() {
+        var enlargedImageModal = document.getElementById("enlargedImage");
+        enlargedImageModal.style.display = "none";
+    }
+</script>
+
+</body>
+</html>
