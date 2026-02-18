@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms</title>
+    <style>
+        /* Reset some default styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            height: 700px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: orange;
+            color: black;
+            padding: .5rem 2rem;
+            border: .2rem solid var(--orange);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: rgba(255, 165, 0, .2);
+        }
+
+        header {
+            background-color: #005a87;
+            color: #fff;
+            padding: 1.5em;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+        }
+
+        .room-types {
+            width: 90%;
+            max-width: 1000px;
+            margin: 2em auto;
+        }
+
+        .room-types h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 1em;
+            color: #333;
+        }
+
+        .room {
+            display: flex;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 1.5em;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .room img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .room-info {
+            padding: 1em;
+        }
+
+        .room-info h3 {
+            color: #005a87;
+            font-size: 1.5em;
+            margin-bottom: 0.5em;
+        }
+
+        .room-info p {
+            margin-bottom: 0.5em;
+        }
+
+        .room-info p:first-of-type {
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 2em;
+            width: 80%;
+            max-width: 900px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal img {
+            width: 100%;  /* Take full width of the modal */
+            height: 80%; /* Maintain aspect ratio */
+            max-height: 80vh;  /* Limit the height to 80% of the viewport height */
+            object-fit: contain;  /* Ensure the image fits within the container */
+        }
+
+        .modal h3 {
+            color: #005a87;
+            font-size: 2em;
+            margin: 1em 0;
+        }
+
+        .modal p {
+            margin: 0.5em 0;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 2em;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background-color: orange;
+            color: black;
+            padding: .5rem 2rem;
+            border: .2rem solid var(--orange);
+            cursor: pointer;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .modal .btn:hover {
+            background: rgba(255, 165, 0, .2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Hotel</h1>
+        <p>Find the perfect room for your stay</p>
+    </header>
+
+    <section class="room-types">
+        <h2>Our Rooms</h2>
+
+        <!-- Room 1 -->
+        <div class="room">
+            <img src="imag6.jpg" alt="Single Room" class="room-img">
+            <div class="room-info">
+                <h3>Single Room</h3>
+                <p>₹3,700 per night</p>
+                <p>A cozy room ideal for one person. Includes a single bed, free Wi-Fi, and a private bathroom.</p>
+                <a href="reservation2.html" class="btn">Book Now</a>
+            </div>
+        </div>
+
+        <!-- Room 2 -->
+        <div class="room">
+            <img src="088.jpg" alt="Double Room" class="room-img">
+            <div class="room-info">
+                <h3>Double Room</h3>
+                <p>₹4,500 per night</p>
+                <p>Perfect for couples, with a double bed, flat-screen TV, and access to a mini-bar.</p>
+                <a href="reservation2.html" class="btn">Book Now</a>
+            </div>
+        </div>
+
+        <!-- Room 3 -->
+        <div class="room">
+            <img src="7.jpg" alt="Suite Room" class="room-img">
+            <div class="room-info">
+                <h3>Suite Room</h3>
+                <p>₹7,800 per night</p>
+                <p>Spacious suite with a king-size bed, living area, and a beautiful view of the city.</p>
+                <a href="reservation2.html" class="btn">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close" id="close">&times;</span>
+            <img src="" id="modal-image" alt="Room Image">
+            <h3 id="modal-title">Room Title</h3>
+            <p id="modal-price">Room Price</p>
+            <p id="modal-description">Room Description</p>
+            <a href="reservation2.html" class="btn">Book Now</a>
+        </div>
+    </div>
+
+    <script>
+        // Get the modal and elements
+        const modal = document.getElementById('modal');
+        const closeBtn = document.getElementById('close');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-title');
+        const modalPrice = document.getElementById('modal-price');
+        const modalDescription = document.getElementById('modal-description');
+
+        // Get all room images
+        const roomImages = document.querySelectorAll('.room-img');
+
+        // Event listener for image clicks
+        roomImages.forEach((image) => {
+            image.addEventListener('click', () => {
+                // Set the modal content based on clicked room
+                const roomInfo = image.closest('.room').querySelector('.room-info');
+                const title = roomInfo.querySelector('h3').innerText;
+                const price = roomInfo.querySelector('p:first-of-type').innerText;
+                const description = roomInfo.querySelector('p:nth-of-type(2)').innerText;
+
+                // Set the modal details
+                modalImage.src = image.src;
+                modalTitle.innerText = title;
+                modalPrice.innerText = price;
+                modalDescription.innerText = description;
+
+                // Show the modal
+                modal.style.display = 'flex';  // Use flex to center the modal content
+            });
+        });
+
+        // Event listener to close the modal
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        // Close modal if clicked outside of the modal-content
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

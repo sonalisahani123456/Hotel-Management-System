@@ -1,0 +1,87 @@
+/* Reset some default styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    height: 700px;
+}
+.btn{
+    display: inline-block;
+    margin-top:1rem;
+   background-color: orange;
+    color:black;
+    padding:.5rem 2rem;
+    border: .2rem solid var(--orange);
+    cursor:pointer;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.btn:hover{
+    background: rgba(255,165,0,.2);
+    
+}
+
+header {
+    background-color: #005a87;
+    color: #fff;
+    padding: 1.5em;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+}
+
+.room-types {
+    width: 90%;
+    max-width: 1000px;
+    margin: 2em auto;
+}
+
+.room-types h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 1em;
+    color: #333;
+}
+
+.room {
+    display: flex;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.room img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.room-info {
+    padding: 1em;
+}
+
+.room-info h3 {
+    color: #005a87;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.room-info p {
+    margin-bottom: 0.5em;
+}
+
+.room-info p:first-of-type {
+    font-weight: bold;
+    color: #333;
+}

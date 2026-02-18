@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hotel Room Offers Across India</title>
+  <style>
+    /* General reset and body styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #d8dfd8;
+  color: #333;
+}
+
+header {
+  background-color: coral;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header .logo {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+nav ul li {
+  margin: 0 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 3em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2em;
+  color: #555;
+}
+
+/* Filter Section */
+.filter-section {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.filter-section select {
+  padding: 10px;
+  font-size: 1em;
+}
+
+/* Offers Section */
+.offers-section {
+  padding: 50px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.offers-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Offer Cards */
+.offer-card {
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.offer-card:hover {
+  transform: translateY(-10px);
+}
+
+.offer-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.offer-icon {
+  width: 100px;
+  height: 100px;
+  background-color: coral;
+  color: #fff;
+  border-radius: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+ h1 {
+    margin-left: 25px; /* Distance between state name and hotel name */
+    font-size: 22px;
+    font-weight: bold;
+    color: black; 
+ }
+.offer-title {
+  font-size: 1.2em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.offer-description {
+  font-size: 1em;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.offer-btn {
+  background-color: coral;
+  color: #fff;
+  padding: 12px 25px; /* Increased padding for a larger button */
+  font-size: 15px; /* Larger text size */
+  
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.offer-btn:hover {
+  
+  background-color: coral;
+  transform: scale(1.1); /* Slightly enlarges button on hover */
+}
+
+
+
+.countdown-timer {
+  font-size: 1.1em;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.timer {
+  font-size: 1.2em;
+  color: coral;
+}
+
+/* Modal Styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-book-btn {
+  background-color:coral ;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-book-btn:hover {
+  background-color: coral;
+}
+
+
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Hotel Offers India</div>
+    <nav>
+      <ul>
+        <li><a href="offer.html">Offers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Explore Hotel Room Offers Across India</h1>
+    <p>Unbeatable prices, luxury rooms, and exclusive offers waiting for you in every state!</p>
+  </section>
+
+  <!-- Filters Section -->
+  <section class="filter-section">
+    <label for="stateFilter">Filter by State:</label>
+    <select id="stateFilter">
+      <option value="all">All States</option>
+      <option value="karnataka">Karnataka</option>
+      <option value="Maharashtra">Maharashtra</option>
+      <option value="Rajasthan">Rajasthan</option>
+      <option value="Kerala">Kerala</option>
+      <option value="Goa">Goa</option>
+      <option value="Himachal Pradesh">Himachal Pradesh</option>
+      <option value="Tamil Nadu">Tamil Nadu</option>
+      <option value="Uttar Pradesh">Uttar Pradesh</option>
+      <option value="West Bengal">West Bengal</option>
+      <option value="Punjab">Punjab</option>
+      <option value="Gujarat">Gujarat</option>
+      <option value="Assam">Assam</option>
+      <option value="Odisha">Odisha</option>
+      <option value="shimla">Shimla</option>
+
+    </select>
+  </section>
+
+  <!-- Offers Section -->
+  <section id="offers" class="offers-section">
+    <h2 class="section-title">Exclusive Offers in Different States</h2>
+
+    <div class="offers-container" id="offersContainer">
+      <!-- Offer Cards (as before, including images) -->
+      <!-- Karnataka -->
+       <div class="offer-card" data-state="karnataka">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Karnataka</span>
+          
+        </div>
+        <img src="of1.jpg" alt="Karnataka Room" class="offer-image">
+        <h1>Gokulam Grand Hotel-Bangalore</h1>
+        <h3 class="offer-title">Stay 3 Nights & Get 30% Off</h3>
+        <p class="offer-description">Book 3 or more nights in Bangalore and enjoy a 30% discount on your stay.</p>
+        
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('Gokulam Grand Hotel-Bangalore', 'Book 3 or more nights in Bangalore and enjoy a 30% discount on your stay.')">Book Now</button>
+      </div>
+      <!-- Karnataka -->
+      <div class="offer-card" data-state="karnataka">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Karnataka</span>
+          
+        </div>
+        <img src="ofgokarna.jpg" alt="Karnataka Room" class="offer-image">
+        <h1> Golden Heights-Gokarna</h1>
+        <h3 class="offer-title"><i>Stay in Our Hotel & Get spa free</i></h3>
+        <p class="offer-description">Stay in Gokarna and ejoy spa on your stay.</p>
+      
+        <div class="countdown-timer" data-time="2025-01-31">Offer ends in: <span class="timer"></span></div><br><br>
+        <button class="offer-btn" onclick="openModal('Golden Heights-Gokarna', 'Stay in Gokarna and ejoy spa on your stay.')">Book Now</button>
+      </div>
+<!-- Karnataka -->
+<div class="offer-card" data-state="karnataka">
+    <div class="offer-icon glitter-effect">
+      <span class="offer-text">Karnataka</span>
+      
+    </div>
+    <img src="ofmysur.jpg" alt="Karnataka Room" class="offer-image">
+    <h1>Royal Tusker Luxury Service Apartments</h1>
+    <h3 class="offer-title"><i>Stay in Our Hotel & Get offers</i></h3>
+    <p class="offer-description">Stay 2 nights in Our Hotel & Get 3rd night free.</p>
+    
+    <div class="countdown-timer" data-time="2025-01-31">Offer ends in: <span class="timer"></span></div>
+    <button class="offer-btn" onclick="openModal('Royal Tusker Luxury Service Apartments', 'Stay 2 nights in Our Hotel & Get 3rd night free.')">Book Now</button>
+  </div>
+      <!-- Goa -->
+      <div class="offer-card" data-state="goa">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Goa</span>
+        </div>
+        <img src="ofcalanguta.webp" alt="Goa Room" class="offer-image">
+        <h1>Calangute Bay</h1>
+        <h3 class="offer-title"><i>Weekend Getaway Special</i></h3>
+        <p class="offer-description">Book a weekend stay in Goa and get complimentary breakfast for two.</p>
+ 
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('Calangute Bay', 'Book a weekend stay in Goa and get complimentary breakfast for two.')">Book Now</button>
+      </div>
+       <!-- Goa -->
+       <div class="offer-card" data-state="goa">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Goa</span>
+        </div>
+        <img src="ofshivam.webp" alt="Goa Room" class="offer-image">
+        <h1>Shivam Resort</h1>
+        <h3 class="offer-title"><i>Weekend Getaway Special</i></h3>
+        <p class="offer-description">Book today for tonight and get 30% off.</p>
+   
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('Shivam Resort', 'Book today for tonight and get 30% off.')">Book Now</button>
+      </div>
+       <!-- Goa -->
+       <div class="offer-card" data-state="goa">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Goa</span>
+        </div>
+        <img src="ofsai.webp" alt="Goa Room" class="offer-image">
+        <h1>Om Sai Beach Hut </h1>
+        <h3 class="offer-title"><i>Honeymoon Special</i></h3>
+        <p class="offer-description">Complimentary spa, candlelight dinner, or room decoration.</p>
+    
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('Om Sai Beach Hut', 'Complimentary spa, candlelight dinner, or room decoration.')">Book Now</button>
+      </div>
+       <!-- Goa -->
+       <div class="offer-card" data-state="goa">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Goa</span>
+        </div>
+        <img src="ofgolden.jpg" alt="Goa Room" class="offer-image">
+        <h1>Golden Rice Resorts and Cottages</h1>
+        <h3 class="offer-title"><i>Weekend Getaway Special</i></h3>
+        <p class="offer-description">Book your stay and parking, spa and wifi.</p>
+       
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('Golden Rice Resorts and Cottages', 'Book your stay and parking, spa and wifi.')">Book Now</button>
+      </div>
+       <!-- Goa -->
+       <div class="offer-card" data-state="goa">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Goa</span>
+        </div>
+        <img src="ofgoa.webp" alt="Goa Room" class="offer-image">
+        <h1>Resorts Primo Bom Terra Verde</h1>
+        <h3 class="offer-title"><i>Weekend Getaway Special</i></h3>
+        <p class="offer-description">Book your stay and get parking and free pool access.</p>
+   
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('Resorts Primo Bom Terra Verde', 'Book your stay and get parking and free pool access.')">Book Now</button>
+      </div>
+       <!-- Shimla -->
+       <div class="offer-card" data-state="shimla">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Shimla</span>
+        </div>
+        <img src="ofcecilshimla.jpg" alt="shimla Room" class="offer-image">
+        <h1>The Oberoi Cecil, Shimla</h1>
+        <h3 class="offer-title"><i>Spa and free valet parking</i></h3>
+        <p class="offer-description">Luxury hotel with full-service spa and free valet parking.</p>
+   
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('The Oberoi Cecil, Shimla', 'Luxury hotel with full-service spa and free valet parking.')">Book Now</button>
+      </div>
+       <!-- Shimla -->
+       <div class="offer-card" data-state="shimla">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Shimla</span>
+        </div>
+        <img src="ofstayvista.jpg" alt="shimla Room" class="offer-image">
+        <h1>StayVista at Simla Manor</h1>
+        <h3 class="offer-title"><i>Weekend Getaway Special</i></h3>
+        <p class="offer-description">Book a weekend stay in Shimla and get complimentary breakfast for two.</p>
+ 
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('StayVista at Simla Manor', 'Book a weekend stay in Shimla and get complimentary breakfast for two.')">Book Now</button>
+      </div>
+      <!-- Shimla -->
+      <div class="offer-card" data-state="shimla">
+        <div class="offer-icon glitter-effect">
+          <span class="offer-text">Shimla</span>
+        </div>
+        <img src="oftreebovar.jpg" alt="shimla Room" class="offer-image">
+        <h1>
+            Treebo Varuna With Mountain View</h1>
+        <h3 class="offer-title"><i>Weekend Getaway Special</i></h3>
+        <p class="offer-description">Book your stay and get free parking .</p>
+ 
+        <div class="countdown-timer" data-time="2024-12-31">Offer ends in: <span class="timer"></span></div>
+        <button class="offer-btn" onclick="openModal('Treebo Varuna With Mountain View', 'Book your stay and get free parking .')">Book Now</button>
+      </div>
+      <div style="text-align:center; color:black">No Offers Available</div>
+   
+
+      <!-- More offer cards here... -->
+    </div>
+  </section>
+
+  <!-- Modal for Detailed Offer -->
+  <div id="offerModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDetails"></p>
+      <button class="modal-book-btn" onclick="window.location.href='reservation_offer.html'" >Book Now</button>
+    </div>
+  </div>
+ 
+
+  <footer id="contact" style="text-align: center;">
+    <p><b>For inquiries, contact us at <a href="contact.html">info@hoteloffers.com</b></a></p>
+    <p><b>&copy; 2024 Hotel Offers India</b></p>
+  </footer>
+
+  <script > 
+    // Modal Functionality
+function openModal(title, details) {
+  document.getElementById('modalTitle').innerText = title;
+  document.getElementById('modalDetails').innerText = details;
+  document.getElementById('offerModal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('offerModal').style.display = 'none';
+}
+
+// Countdown Timer
+function startCountdown() {
+  const timers = document.querySelectorAll('.countdown-timer');
+  
+  timers.forEach(timer => {
+    const endDate = new Date(timer.getAttribute('data-time'));
+    const interval = setInterval(() => {
+      const now = new Date();
+      const diff = endDate - now;
+      
+      if (diff <= 0) {
+        clearInterval(interval);
+        timer.querySelector('.timer').innerText = 'Offer Ended';
+      } else {
+        const hours = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const minutes = Math.floor((diff % (1000 * 60)) / 1000);
+        timer.querySelector('.timer').innerText = `${hours}h ${minutes}m`;
+      }
+    }, 1000);
+  });
+}
+
+startCountdown();
+
+// Filter Offers by State
+document.getElementById('stateFilter').addEventListener('change', function() {
+  const selectedState = this.value;
+  const offers = document.querySelectorAll('.offer-card');
+  
+  offers.forEach(offer => {
+    if (selectedState === 'all' || offer.getAttribute('data-state') === selectedState) {
+      offer.style.display = 'block';
+    } else {
+      offer.style.display = 'none';
+    }
+  });
+});
+
+  </script>
+</body>
+</html>
